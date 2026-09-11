@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "date": "2026-09-11",
+  "amendment_frozen_before_fix": true,
+  "v1_preserved": "manifest-v1.json",
+  "authorship": "AI-authored synthetic regression cases; internal checks",
+  "cases_sha256": "09a268bf71b86748367bcc661d2f71e99710e6cab17172a574ef176d14623674",
+  "amendment": "A local completed state is a recorded claim that must not be ignored. Without matching authoritative completion, hold for reconciliation even when idempotency is declared. A conflicting not_completed receipt stays unknown. New operation identity is separate work."
+}

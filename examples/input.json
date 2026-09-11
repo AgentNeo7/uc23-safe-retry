@@ -1,0 +1,15 @@
+{
+  "idempotency_supported": false,
+  "operation": "o1",
+  "payload": {
+    "amount": 1
+  },
+  "previous": {
+    "operation": "o1",
+    "payload": {
+      "amount": 1
+    },
+    "state": "uncertain"
+  },
+  "receipt": "unknown"
+}

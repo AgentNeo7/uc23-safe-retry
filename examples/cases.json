@@ -1,0 +1,163 @@
+[
+  {
+    "expected": {
+      "decision": "unknown",
+      "next": "hold",
+      "reason": "completion_unresolved"
+    },
+    "input": {
+      "idempotency_supported": false,
+      "operation": "o1",
+      "payload": {
+        "amount": 1
+      },
+      "previous": {
+        "operation": "o1",
+        "payload": {
+          "amount": 1
+        },
+        "state": "uncertain"
+      },
+      "receipt": "unknown"
+    },
+    "name": "reference"
+  },
+  {
+    "expected": {
+      "decision": "complete",
+      "next": "do_not_repeat",
+      "reason": "authoritative_receipt_model"
+    },
+    "input": {
+      "idempotency_supported": false,
+      "operation": "o1",
+      "payload": {
+        "amount": 1
+      },
+      "previous": {
+        "operation": "o1",
+        "payload": {
+          "amount": 1
+        },
+        "state": "uncertain"
+      },
+      "receipt": "completed"
+    },
+    "name": "control"
+  },
+  {
+    "expected": {
+      "decision": "failure",
+      "next": "hold",
+      "reason": "operation_identity_collision"
+    },
+    "input": {
+      "idempotency_supported": false,
+      "operation": "o1",
+      "payload": {
+        "amount": 1
+      },
+      "previous": {
+        "operation": "o1",
+        "payload": {
+          "amount": 2
+        },
+        "state": "uncertain"
+      },
+      "receipt": "unknown"
+    },
+    "name": "unknown_or_refusal"
+  },
+  {
+    "expected": {
+      "decision": "unknown",
+      "next": "hold",
+      "reason": "local_completion_requires_reconciliation"
+    },
+    "input": {
+      "idempotency_supported": false,
+      "operation": "o1",
+      "payload": {
+        "amount": 1
+      },
+      "previous": {
+        "operation": "o1",
+        "payload": {
+          "amount": 1
+        },
+        "state": "completed"
+      },
+      "receipt": "unknown"
+    },
+    "name": "local_completed_unknown_receipt_False"
+  },
+  {
+    "expected": {
+      "decision": "unknown",
+      "next": "hold",
+      "reason": "local_completion_requires_reconciliation"
+    },
+    "input": {
+      "idempotency_supported": true,
+      "operation": "o1",
+      "payload": {
+        "amount": 1
+      },
+      "previous": {
+        "operation": "o1",
+        "payload": {
+          "amount": 1
+        },
+        "state": "completed"
+      },
+      "receipt": "unknown"
+    },
+    "name": "local_completed_unknown_receipt_True"
+  },
+  {
+    "expected": {
+      "decision": "unknown",
+      "next": "hold",
+      "reason": "completion_evidence_conflict"
+    },
+    "input": {
+      "idempotency_supported": true,
+      "operation": "o1",
+      "payload": {
+        "amount": 1
+      },
+      "previous": {
+        "operation": "o1",
+        "payload": {
+          "amount": 1
+        },
+        "state": "completed"
+      },
+      "receipt": "not_completed"
+    },
+    "name": "contradictory_completion"
+  },
+  {
+    "expected": {
+      "decision": "complete",
+      "next": "submit_model",
+      "reason": "new_operation"
+    },
+    "input": {
+      "idempotency_supported": false,
+      "operation": "new-request",
+      "payload": {
+        "amount": 1
+      },
+      "previous": {
+        "operation": "o1",
+        "payload": {
+          "amount": 1
+        },
+        "state": "completed"
+      },
+      "receipt": "unknown"
+    },
+    "name": "new_operation_not_deduplicated"
+  }
+]

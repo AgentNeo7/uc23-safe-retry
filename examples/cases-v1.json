@@ -1,0 +1,71 @@
+[
+  {
+    "expected": {
+      "decision": "unknown",
+      "next": "hold",
+      "reason": "completion_unresolved"
+    },
+    "input": {
+      "idempotency_supported": false,
+      "operation": "o1",
+      "payload": {
+        "amount": 1
+      },
+      "previous": {
+        "operation": "o1",
+        "payload": {
+          "amount": 1
+        },
+        "state": "uncertain"
+      },
+      "receipt": "unknown"
+    },
+    "name": "reference"
+  },
+  {
+    "expected": {
+      "decision": "complete",
+      "next": "do_not_repeat",
+      "reason": "authoritative_receipt_model"
+    },
+    "input": {
+      "idempotency_supported": false,
+      "operation": "o1",
+      "payload": {
+        "amount": 1
+      },
+      "previous": {
+        "operation": "o1",
+        "payload": {
+          "amount": 1
+        },
+        "state": "uncertain"
+      },
+      "receipt": "completed"
+    },
+    "name": "control"
+  },
+  {
+    "expected": {
+      "decision": "failure",
+      "next": "hold",
+      "reason": "operation_identity_collision"
+    },
+    "input": {
+      "idempotency_supported": false,
+      "operation": "o1",
+      "payload": {
+        "amount": 1
+      },
+      "previous": {
+        "operation": "o1",
+        "payload": {
+          "amount": 2
+        },
+        "state": "uncertain"
+      },
+      "receipt": "unknown"
+    },
+    "name": "unknown_or_refusal"
+  }
+]

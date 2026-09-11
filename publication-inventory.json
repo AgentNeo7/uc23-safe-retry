@@ -1,0 +1,122 @@
+[
+  {
+    "path": ".github/workflows/validate.yml",
+    "sha256": "69909f2d6f316f71100a3fec74d5d79e6997dd4dc84b2ebbaa94d19f67f1e8f1",
+    "bytes": 488
+  },
+  {
+    "path": ".gitignore",
+    "sha256": "20038cf9d9358b0fa34cbe4a2a199fa94e58852359846483d05dc5f08ef933d0",
+    "bytes": 50
+  },
+  {
+    "path": ".python-version",
+    "sha256": "f8faecf2505680716c6279bf2cdec3d5a5ba2ba852f0d7df45d51ac1ce8d9ade",
+    "bytes": 8
+  },
+  {
+    "path": "ATTRIBUTION.md",
+    "sha256": "ae950a171e3c4005b5824b0713a54db40a5b43a72b36652c4190d0ad0d5be200",
+    "bytes": 668
+  },
+  {
+    "path": "LICENSE",
+    "sha256": "f5eee63fb76b6585d82d7c3e7e7c5136331316c3256e72cb6bdf587f234d20de",
+    "bytes": 1077
+  },
+  {
+    "path": "README.md",
+    "sha256": "96439a15957b7ea162d3069af593e76079414b58f924481d18dba5f18b2ea408",
+    "bytes": 4608
+  },
+  {
+    "path": "RELEASE_STATUS.md",
+    "sha256": "ddfffb46be8f71fbf60b0a44ba78129e4a942f48bf4137cbf35e4547bad46cec",
+    "bytes": 1156
+  },
+  {
+    "path": "capability.json",
+    "sha256": "0d9901aa1d978be3773d30263615f6c8b4ee87f507562c8eb9675e98cbc99b25",
+    "bytes": 2253
+  },
+  {
+    "path": "checks-before-io-hardening.json",
+    "sha256": "ba18bb068970e604727df66ac2a93644c64df2cdf3b2db27fc228eb9731e6e56",
+    "bytes": 622
+  },
+  {
+    "path": "checks-v1.json",
+    "sha256": "f5bd2262f12c48fca18001cfe9cb1e8ae12facf27c7ecff43a7c0cefd8e2e4b8",
+    "bytes": 896
+  },
+  {
+    "path": "checks.json",
+    "sha256": "a686290e5cb6566809b8081871cd45d44ec2ca873240519a3d12dbb20155a2e4",
+    "bytes": 1269
+  },
+  {
+    "path": "examples/cases-v1.json",
+    "sha256": "7f58cc85998e9376e8a10595a0d1b01717c5971d29e8380f771468c41c006972",
+    "bytes": 1379
+  },
+  {
+    "path": "examples/cases.json",
+    "sha256": "09a268bf71b86748367bcc661d2f71e99710e6cab17172a574ef176d14623674",
+    "bytes": 3321
+  },
+  {
+    "path": "examples/expected-v1.json",
+    "sha256": "397b968adb43d067b2ceb73f62bc006cfbc3f771e187ac07fc42ba029655884a",
+    "bytes": 83
+  },
+  {
+    "path": "examples/expected.json",
+    "sha256": "397b968adb43d067b2ceb73f62bc006cfbc3f771e187ac07fc42ba029655884a",
+    "bytes": 83
+  },
+  {
+    "path": "examples/input.json",
+    "sha256": "b2fe125c71173f211a09ee8f54867f5ae7d10706bc6c04dc8f96074b732cd857",
+    "bytes": 229
+  },
+  {
+    "path": "examples/manifest-v1.json",
+    "sha256": "4132ac8e8c8f503bc9bc8a8dee754ed85d0ce09435075463e1709d683089d27e",
+    "bytes": 179
+  },
+  {
+    "path": "examples/manifest.json",
+    "sha256": "3cf3c057d615c8868752c563f4603563892754d68d6b2c861c0480c99f58d7fb",
+    "bytes": 563
+  },
+  {
+    "path": "regression-before-fix.json",
+    "sha256": "11a56207011d7e6be15058d8c88a838dcb31da71afe4c777e5e3333022648683",
+    "bytes": 4430
+  },
+  {
+    "path": "release-checks.json",
+    "sha256": "7d644ba4ef04cc377ed12030ecc74d7fc2e4ec2e52222970eaf259c1612c6927",
+    "bytes": 1488
+  },
+  {
+    "path": "requirements.json",
+    "sha256": "1b3d6351eeebc03ebc100426fc2c985c051aa852f1171164bab9e78fb815893c",
+    "bytes": 7521
+  },
+  {
+    "path": "requirements.lock",
+    "sha256": "8df9d391f9d6b1c16a647aa6a0ad3baee6e6bc2fac546b2e12e918f661b47d5b",
+    "bytes": 144
+  },
+  {
+    "path": "test_tool.py",
+    "sha256": "8a273bf9596d54eea166fb9e52b81ae7d3678c1930f044263b08537e1d476c91",
+    "bytes": 3704
+  },
+  {
+    "path": "tool.py",
+    "sha256": "d17bb4f1f7a842a1217c149114cb9f8b17ed229f6d2f19d197ca8b2597e791ee",
+    "bytes": 4809
+  }
+]

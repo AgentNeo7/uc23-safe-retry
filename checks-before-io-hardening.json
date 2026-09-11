@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/opt/homebrew/opt/python@3.13/bin/python3.13",
+    "test_tool.py",
+    "-v"
+  ],
+  "date": "2026-09-11",
+  "version": 2,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_cli_decisions (__main__.Tests.test_cli_decisions) ... ok\ntest_frozen_oracles (__main__.Tests.test_frozen_oracles) ... ok\ntest_malformed_cli (__main__.Tests.test_malformed_cli) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.292s\n\nOK\n",
+  "context": "v2 regression contract after fix",
+  "tool_sha256": "a7c61cbf789a2d1b67559d5ba98d4ca416ba6747bd078225281fd8fc81c56a49"
+}
