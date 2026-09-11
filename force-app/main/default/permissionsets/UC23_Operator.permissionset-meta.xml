@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+  <classAccesses>
+    <apexClass>UC23Service</apexClass>
+    <enabled>true</enabled>
+  </classAccesses>
+  <fieldPermissions>
+    <editable>true</editable>
+    <field>UC23_Operation__c.Operation_Key__c</field>
+    <readable>true</readable>
+  </fieldPermissions>
+  <fieldPermissions>
+    <editable>true</editable>
+    <field>UC23_Operation__c.State__c</field>
+    <readable>true</readable>
+  </fieldPermissions>
+  <label>UC23 Evaluator</label>
+  <objectPermissions>
+    <allowCreate>true</allowCreate>
+    <allowDelete>false</allowDelete>
+    <allowEdit>false</allowEdit>
+    <allowRead>true</allowRead>
+    <modifyAllRecords>false</modifyAllRecords>
+    <object>UC23_Operation__c</object>
+    <viewAllRecords>false</viewAllRecords>
+  </objectPermissions>
+</PermissionSet>

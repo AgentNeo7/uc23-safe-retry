@@ -1,48 +1,35 @@
-# UC23 — Agent Safe Retry
+# UC23 — Salesforce Safe Retry
 
-In-memory operation identity and retry simulation. This is a runnable local prototype with bounded checks. Full catalog requirements remain partial or unmet in `requirements.json`. It is not a production integration or differentiated-method release.
+Durable unique operation-key reservation in Salesforce; duplicates and uncertain completion never authorize retry.
 
-## Run
+This replaces the generic Python prototype with Salesforce source. API 64.0 is pinned. Each directory is independent. No Python runtime or paid service is required.
 
-Requires Python 3.13; tested with `/opt/homebrew/bin/python3.13`. Uses only the standard library. From this directory:
+## Checks and installation
 
-```bash
-python3.13 tool.py --input examples/input.json --output result.json
-python3.13 test_tool.py -v
+Run `npm test` with Node 22+. Local tests validate metadata structure and synthetic controls. They do **not** compile or execute Apex.
+
+In an explicitly authorized disposable org, review the source and run:
+
+```sh
+sf project deploy start --dry-run --source-dir force-app --test-level RunSpecifiedTests --tests UC23ServiceTest --target-org YOUR_DISPOSABLE_ORG
 ```
 
-The reference input may intentionally return 1 for a declared failure. Exit 0 means a completed report, including an explicit unknown; it does not mean safety. Exit 1 means a configured check failed. Exit 2 means malformed input or an I/O failure. Output is deterministic JSON. Compare it with `examples/expected.json`. Reports never execute external actions.
+Only after dry-run tests and security review pass, an authorized operator can remove `--dry-run` to install. Assign the included `UC23_Operator` permission set only to designated evaluators. Standard-object CRUD/FLS is intentionally not granted; provision the least access for the test identity. No credentials, org connection or deployment was used to build this package.
 
-## Inputs and checks
+## Scope and remaining gates
 
-`examples/input.json` defines the supported explicit input contract. `examples/cases.json` contains 7 original synthetic scenarios with expected JSON frozen before implementation. Its hash is in `examples/manifest.json`. Tests compare full reports, exercise CLI exit codes, and reject four malformed inputs. `checks.json` preserves command, exit code, output and code hash. Tests passed locally; this tiny corpus is internal validation, not independent review or broad reliability evidence.
+Apex compilation and execution unverified; requires an authorized disposable Salesforce org and domain-owner acceptance. No independent comparison or field adoption evidence. See `requirements.json` for the five exact original requirements. API limits, negative-permission users, bulk limits, concurrency, actual Flow integration and security review require native checks. A source preview is not a supported release. No EB1A outcome, novelty, independent recognition or final-merits claim follows from these artifacts.
 
-## Scope and limits
+## Evidence and authorship
 
-No durable ledger, worker concurrency, actual service call or exactly-once guarantee. Receipts and capabilities are caller-supplied simulated facts, not verified outcomes.
+Fixtures are synthetic and authored by AI. Source records are in `sources.json`. AI authored the implementation; Balaji supplied the Salesforce focus and portfolio direction. His independent technical review and decisions are not yet observed. Treat local results as simulated checks, source inspection as observed, and native behavior as proposed until executed.
 
-Malformed-input checks cover only the tested shapes. This is not a hardened untrusted-input service. Input permissions and truth must be established by the caller. Do not supply production credentials. Examples contain synthetic data.
+## Salesforce-specific boundaries
 
-## Baseline and research decision
+Operation_Key__c is a unique external ID. Only insert reserves: no upsert, overwrite or duplicate retry. RESERVED_UNCERTAIN does not authorize an external write. A failed insert holds. No reconciliation adapter or receipt completion writer exists; retention and deletion controls need an org owner.
 
-[Primary source](https://docs.stripe.com/api/idempotent_requests), accessed 2026-09-11. Idempotency keys and parameter consistency already exist; local simulation cannot establish external completion. Publication date/version is unknown unless recorded in `capability.json`; live documentation or main-branch behavior must be pinned before integration. No external product was executed. This source is vendor/maintainer evidence, not independent recognition.
+Database reservation failures expose only their Salesforce status code (`errorCode`), never raw database error text. This supports diagnosing permission failures while preserving the HOLD decision.
 
-Comparative differentiation is untested. Keep this narrow utility; do not expand on the basis of a passing toy example.
+## Distribution
 
-## Release and attribution
-
-This source preview contains local artifacts; no outreach occurred. MIT is applied to original code; full module release gates remain unmet. AI authored this code, tests and documentation. Balaji supplied priorities and constraints; no unobserved implementation work or external recognition is attributed to him. Before a broader release, assign a maintenance owner and address the original requirements and blockers individually.
-
-## Correctness amendment — 2026-09-11
-
-A previous completed state for the same operation/payload now holds for reconciliation when the receipt is unknown, regardless of declared idempotency support. A not-completed receipt conflicting with local completed state also holds. Local state is not authoritative proof of external completion, but it cannot be silently ignored. A genuinely new operation remains separate work.
-
-Version 1 fixtures and checks are preserved. Version 2 adds four regression cases before the fix. The original implementation failed those new checks (`regression-before-fix.json`, exit 1); the fixed implementation passes all seven scenarios plus malformed CLI checks (`checks.json`, exit 0).
-
-## Bounded CLI input — 2026-09-11
-
-The CLI reads at most 2,000,000 bytes and rejects JSON deeper than 32 levels, containers over 1,000 entries, duplicate object keys and nonfinite numbers. Output cannot resolve to the input file, including symlink or existing same-file aliases. These errors exit 2 before writing. Five test methods now include duplicate-key, nesting, byte/container-size, numeric-overflow and overwrite regressions. `checks-before-io-hardening.json` preserves earlier checks; `checks.json` records the new run and source hashes. Decision algorithms and frozen scenario fixtures did not change. These bounds do not constitute a general security audit.
-
-## Source preview status
-
-Experimental offline source; scoped tests passed, full original acceptance is incomplete. See [release status](RELEASE_STATUS.md), [checks](release-checks.json), [requirements](requirements.json) and [attribution](ATTRIBUTION.md). No production, independent-validation or differentiation claim.
+Salesforce is the primary implementation. Historical Python source is under `legacy/python-prototype`. See `RELEASE_STATUS.md` and `SALESFORCE_VALIDATION.json`. Full acceptance remains partial.

@@ -1,0 +1,63 @@
+{
+  "id": "UC23",
+  "name": "Safe Retry",
+  "platform": "Salesforce",
+  "scope": "Durable unique operation-key reservation in Salesforce; duplicates and uncertain completion never authorize retry.",
+  "requirements": [
+    {
+      "id": "UC23-R01",
+      "coverage": "Unique Salesforce operation-key external ID; no task-derived key inference",
+      "blocker": "Apex compilation and execution unverified; requires an authorized disposable Salesforce org and domain-owner acceptance. No independent comparison or field adoption evidence."
+    },
+    {
+      "id": "UC23-R02",
+      "coverage": "Durable RESERVED_UNCERTAIN custom object; no completion receipt writer",
+      "blocker": "Apex compilation and execution unverified; requires an authorized disposable Salesforce org and domain-owner acceptance. No independent comparison or field adoption evidence."
+    },
+    {
+      "id": "UC23-R03",
+      "coverage": "Insert-only reservation; duplicate or permission failure holds",
+      "blocker": "Apex compilation and execution unverified; requires an authorized disposable Salesforce org and domain-owner acceptance. No independent comparison or field adoption evidence."
+    },
+    {
+      "id": "UC23-R04",
+      "coverage": "No external operation or receipt query, so uncertainty never retries",
+      "blocker": "Apex compilation and execution unverified; requires an authorized disposable Salesforce org and domain-owner acceptance. No independent comparison or field adoption evidence."
+    },
+    {
+      "id": "UC23-R05",
+      "coverage": "Native duplicate reservation test authored; concurrency and connector failure injection unmet",
+      "blocker": "Apex compilation and execution unverified; requires an authorized disposable Salesforce org and domain-owner acceptance. No independent comparison or field adoption evidence."
+    }
+  ],
+  "blockers": [
+    "Apex compilation and execution unverified; requires an authorized disposable Salesforce org and domain-owner acceptance. No independent comparison or field adoption evidence.",
+    "Operation_Key__c is a unique external ID. Only insert reserves: no upsert, overwrite or duplicate retry. RESERVED_UNCERTAIN does not authorize an external write. A failed insert holds. No reconciliation adapter or receipt completion writer exists; retention and deletion controls need an org owner."
+  ],
+  "native_tests": [
+    {
+      "name": "UC23ServiceTest",
+      "status": "passed_scoped_native",
+      "controls": "empty batch and synthetic negative/positive native control"
+    }
+  ],
+  "commands": [
+    "npm test",
+    "sf project deploy start --dry-run --source-dir force-app --test-level RunSpecifiedTests --tests UC23ServiceTest --target-org YOUR_DISPOSABLE_ORG"
+  ],
+  "offline_checks": {
+    "status": "passed",
+    "command": "npm test",
+    "evidence": "local-checks.log",
+    "classification": "simulated"
+  },
+  "status": "scoped_native_validated",
+  "full_acceptance_complete": false,
+  "native_validation": {
+    "status": "passed",
+    "mode": "dry-run",
+    "tests_completed": 2,
+    "persisted_deployment": false,
+    "scope": "one Developer org; scoped unit tests and supplied metadata only"
+  }
+}

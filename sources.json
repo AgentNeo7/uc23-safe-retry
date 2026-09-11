@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://developer.salesforce.com/docs/platform/lwc/guide/apex-security",
+    "supports": "Explicit user-mode database access and sharing boundaries",
+    "status": "externally reported"
+  },
+  {
+    "url": "https://developer.salesforce.com/blogs/2023/05/write-simplified-and-secure-apex-with-spring-23-updates",
+    "supports": "User-mode Apex database operations",
+    "status": "externally reported"
+  },
+  {
+    "url": "https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/knowledge_development_soql_sosl_intro.htm",
+    "supports": "Knowledge SOQL publication-status restrictions",
+    "status": "externally reported"
+  },
+  {
+    "url": "https://help.salesforce.com/s/articleView?id=admin_monitorsetup.htm&language=en_US&type=5",
+    "supports": "Setup audit trail records setup changes; not full business causality",
+    "status": "externally reported"
+  }
+]
